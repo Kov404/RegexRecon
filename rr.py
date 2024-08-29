@@ -81,7 +81,7 @@ def main():
     parser.add_argument('-r', '--regex', help="Caminho para o arquivo de regex")
     parser.add_argument('-t', '--threads', default='10', help="Quantidade de threads a ser utilizado")
     parser.add_argument('-a', '--user-agent', default='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', help="User-Agent a ser utilizado nas requisições")
-    #parser.add_argument('-p', '--proxy')
+
 
 
     args = parser.parse_args()
