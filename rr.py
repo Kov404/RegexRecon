@@ -19,7 +19,7 @@ class Regex:
             #r'[A-Za-z0-9/+=]{40}',
             r'AIza[0-9A-Za-z-_]{35}',
             #r'[A-Za-z0-9/+=]{16,}',
-            r'\d{12}',
+            #r'\d{12}',
             r"(apikey|APIKEY)[\s]*[:=]+[\s]*[\"\']?[0-9A-Za-z\-]{5,100}[\"\']?",
             r'(?:https://)?(?:[a-zA-Z0-9_\-]+)\.blob\.core\.windows\.net',
         ]
@@ -35,11 +35,12 @@ class Regex:
             match_found = False
             for match_num, match in enumerate(matches, start=1):
                 match_found = True
-                print(f"Regex: {regex}")
+                print(ip)
+                #print(f"Regex: {regex}")
                 print(f"Match {match_num} found: {match.group()}")
                 with open(output_file, 'a') as out_file:
                     log_lines = [
-                        #f"IP: {ip}\n", 
+                        f"IP: {ip}\n", 
                         f"URL: {line}\n", 
                         f"Regex: {regex}\n", 
                         f"Match {match_num}: {match.group()}\n\n"
@@ -49,7 +50,7 @@ class Regex:
 
         for line in lines:
             ip = line.strip()
-            print(ip)
+            
             header = {'User-Agent': self.userAgent}
             proxy = {'http': 'http://127.0.0.1:8080'}
 
@@ -81,7 +82,7 @@ def main():
     parser.add_argument('-r', '--regex', help="Caminho para o arquivo de regex")
     parser.add_argument('-t', '--threads', default='10', help="Quantidade de threads a ser utilizado")
     parser.add_argument('-a', '--user-agent', default='Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/91.0.4472.124 Safari/537.36', help="User-Agent a ser utilizado nas requisições")
-
+    #parser.add_argument('-p', '--proxy')
 
 
     args = parser.parse_args()
